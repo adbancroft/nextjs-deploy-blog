@@ -3,9 +3,11 @@ FROM node:23-alpine
 RUN mkdir -p /app 
 WORKDIR /app 
 
-COPY . . 
+COPY package*.json ./
+RUN npm install
 
-RUN npm install && npm run build 
+COPY . . 
+RUN npm run build 
 
 EXPOSE 3000 
 
